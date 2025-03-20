@@ -1,0 +1,25 @@
+name: test-app-with-Node.js-and-hexlet.action
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: Run Makefile command
+        run: |
+          make setup
+          make lint
+          make test
+      - name: Run Hexlet action
+        uses: hexlet-components/hello-from-hexlet-action@release
