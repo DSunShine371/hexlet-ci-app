@@ -15,3 +15,5 @@ jobs:
       - name: Run Makefile command
         run: |
           make setup
+          make test
+          make lint
